@@ -1,0 +1,56 @@
+<section class="card">
+  <h2>Items</h2>
+
+  @if (loading()) {
+    <p class="muted">Loading...</p>
+  } @else if (error()) {
+    <p class="error">{{ error() }}</p>
+    <button type="button" (click)="loadItems()">Retry</button>
+  } @else {
+    <form class="form" (ngSubmit)="addItem()">
+      <input
+        type="text"
+        name="title"
+        [(ngModel)]="newTitle"
+        placeholder="Title"
+        required
+      />
+      <input
+        type="text"
+        name="description"
+        [(ngModel)]="newDescription"
+        placeholder="Description (optional)"
+      />
+      <button type="submit">Add</button>
+    </form>
+
+    @if (items().length === 0) {
+      <p class="muted">No items yet. Create your first one above.</p>
+    } @else {
+      <ul class="list">
+        @for (item of items(); track item._id) {
+          <li [class.done]="item.completed">
+            <label>
+              <input
+                type="checkbox"
+                [checked]="item.completed"
+                (change)="toggleComplete(item)"
+              />
+              <span class="title">{{ item.title }}</span>
+            </label>
+            @if (item.description) {
+              <p class="desc">{{ item.description }}</p>
+            }
+            <button
+              type="button"
+              class="danger"
+              (click)="removeItem(item._id)"
+            >
+              Delete
+            </button>
+          </li>
+        }
+      </ul>
+    }
+  }
+</section>
