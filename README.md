@@ -1,81 +1,81 @@
-# Fullstack App
+# AI Skills Catalog
 
-Proyecto fullstack con **Express + MongoDB** (backend) y **Angular** (frontend).
+Fullstack project with **Express + MongoDB** (backend) and **Angular** (frontend).
 
-## Estructura
+## Structure
 
 ```
 fullstack-app/
-├── backend/          # API REST (Express + Mongoose)
+├── backend/          # REST API (Express + Mongoose)
 ├── frontend/         # SPA (Angular 19)
 ├── docker-compose.yml
-└── package.json      # Scripts para desarrollo conjunto
+└── package.json      # Scripts for joint development
 ```
 
-## Requisitos
+## Requirements
 
 - Node.js 20+
-- Docker (opcional, para MongoDB local)
+- Docker (optional, for local MongoDB)
 
-## Inicio rápido
+## Quick start
 
 ### 1. MongoDB
 
-Con Docker:
+With Docker:
 
 ```bash
 npm run docker:db
 ```
 
-O usa una instancia local en `mongodb://localhost:27017`.
+Or use a local instance at `mongodb://localhost:27017`.
 
-### 2. Variables de entorno (backend)
+### 2. Environment variables (backend)
 
 ```bash
 cp backend/.env.example backend/.env
 ```
 
-### 3. Instalar dependencias
+### 3. Install dependencies
 
 ```bash
 npm run install:all
 ```
 
-### 4. Desarrollo (API + frontend)
+### 4. Development (API + frontend)
 
 ```bash
 npm run dev
 ```
 
 - API: http://localhost:3000
-- Frontend: http://localhost:4200 (proxy `/api` → backend)
+- Frontend: http://localhost:4200 (proxies `/api` → backend)
 
 ## Scripts
 
-| Comando | Descripción |
+| Command | Description |
 |---------|-------------|
-| `npm run dev` | Backend + frontend en paralelo |
-| `npm run dev:api` | Solo API |
-| `npm run dev:web` | Solo Angular |
-| `npm run docker:db` | Levanta MongoDB en Docker |
+| `npm run dev` | Backend + frontend in parallel |
+| `npm run dev:api` | API only |
+| `npm run dev:web` | Angular only |
+| `npm run docker:db` | Start MongoDB in Docker |
 
 ## API
 
-| Método | Ruta | Descripción |
-|--------|------|-------------|
+| Method | Route | Description |
+|--------|-------|-------------|
 | GET | `/api/health` | Health check |
-| GET | `/api/items` | Listar items |
-| GET | `/api/items/:id` | Obtener item |
-| POST | `/api/items` | Crear item |
-| PUT | `/api/items/:id` | Actualizar item |
-| DELETE | `/api/items/:id` | Eliminar item |
+| GET | `/api/items` | List items |
+| GET | `/api/items/:id` | Get item |
+| POST | `/api/items` | Create item |
+| PUT | `/api/items/:id` | Update item |
+| DELETE | `/api/items/:id` | Delete item |
 
-Ejemplo de body para crear:
+Example body for create:
 
 ```json
 {
-  "title": "Mi tarea",
-  "description": "Opcional",
+  "title": "My task",
+  "description": "Optional",
   "completed": false
 }
 ```
